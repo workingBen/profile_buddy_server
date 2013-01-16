@@ -6,4 +6,4 @@ require 'api.rb'
 
 use CrossOriginResourceSharingPolicy
 
-run ProfileBuddyServer::Application
+run ProfileBuddyServer::API
