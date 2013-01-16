@@ -6,7 +6,11 @@ class ProfileBuddyServer::API < Grape::API
 
   end
 
-  resource :profile do
+  resource :profiles do
+    get do
+      Profile.all
+    end
+
     get ':username' do
       Profile.where("username = #{params[:username]}").order("created_at DESC")
     end
