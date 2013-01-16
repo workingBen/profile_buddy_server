@@ -140,6 +140,7 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   grape!
   jquery-rails
+  json
   pg
   pry
   rails (= 3.2.11)
