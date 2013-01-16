@@ -1,3 +1,5 @@
 class Profile < ActiveRecord::Base
-  # attr_accessible :title, :body
+  attr_accessible :username
+
+  validates :username, uniqueness: true
 end
