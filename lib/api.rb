@@ -11,8 +11,8 @@ class ProfileBuddyServer::API < Grape::API
       Profile.all
     end
 
-    get ':username' do
-      Profile.where("username = #{params[:username]}").order("created_at DESC")
+    get ':id' do
+      Profile.order("created_at DESC").find(params[:id])
     end
   end
 end
