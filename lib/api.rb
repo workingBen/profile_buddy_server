@@ -6,13 +6,23 @@ class ProfileBuddyServer::API < Grape::API
 
   end
 
-  resource :profiles do
+  resource :profile do
     get do
       Profile.all
     end
 
-    get ':id' do
-      Profile.order("created_at DESC").find(params[:id])
+    get ':username' do
+      Profile.order("created_at DESC").find_by_username(params[:username])
+    end
+
+    post 'scrape/:username' do
+      require 'pry'
+
+      username = params[:username]
+
+#      binding.pry
+
+      Profile.last
     end
   end
 end
