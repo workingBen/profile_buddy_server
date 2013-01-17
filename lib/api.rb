@@ -1,3 +1,5 @@
+require 'scraper_base'
+
 class ProfileBuddyServer::API < Grape::API
   format :json
   version 'v1', using: :path
@@ -5,6 +7,8 @@ class ProfileBuddyServer::API < Grape::API
   helpers do
 
   end
+
+  helpers ScraperBase
 
   resource :profile do
     get do
@@ -16,13 +20,11 @@ class ProfileBuddyServer::API < Grape::API
     end
 
     post 'scrape/:username' do
-      require 'pry'
-
       username = params[:username]
+      return profile if profile = Profile.find_by_username(username)
 
-#      binding.pry
-
-      Profile.last
+      data = scrapeProfile(username).merge({ username: username })
+      Profile.create data
     end
   end
 end

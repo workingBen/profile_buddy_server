@@ -11,12 +11,22 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130116061553) do
+ActiveRecord::Schema.define(:version => 20130117081729) do
 
   create_table "profiles", :force => true do |t|
     t.string   "username"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
+    t.text     "self_summary"
+    t.text     "doing_with_my_life"
+    t.text     "really_good_at"
+    t.text     "first_things_people_notice"
+    t.text     "favorite_books_movies_shows_music_food"
+    t.text     "six_things"
+    t.text     "think_about"
+    t.text     "friday_night"
+    t.text     "private_admission"
+    t.text     "message_me_if"
   end
 
 end

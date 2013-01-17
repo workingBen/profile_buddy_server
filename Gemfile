@@ -5,7 +5,7 @@ gem 'rails', '3.2.11'
 gem 'grape', git: 'https://github.com/intridea/grape.git'
 
 gem 'json'
-
+gem 'nokogiri'
 gem 'pg'
 
 # Gems used only for assets and not required
