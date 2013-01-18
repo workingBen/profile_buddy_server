@@ -10,18 +10,10 @@ class ProfileBuddyServer::API < Grape::API
 
   helpers ScraperBase
 
-  resource :profiles do
-    get do
-      Profile.all
+  resource :users do
+    get ':username' do
+      Profile.order("created_at DESC").find_by_username(params[:username])
     end
-
-    get ':id' do
-      Profile.find(params[:id])
-    end
-
-#   get ':username' do
-#     Profile.order("created_at DESC").find_by_username(params[:username])
-#   end
 
     post 'scrape/:username' do
       username = params[:username]
@@ -29,11 +21,16 @@ class ProfileBuddyServer::API < Grape::API
         return user
       end
 
-      User.create({ username: username })
+      user = User.create({ username: username })
 
       data = scrapeProfile(username)
-      Profile.create data
+      user.profiles.create data
+
+      user
     end
+  end
+
+  resource :profiles do
   end
 end
 
