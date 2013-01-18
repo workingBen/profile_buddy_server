@@ -12,7 +12,7 @@ class ProfileBuddyServer::API < Grape::API
 
   resource :users do
     get ':username' do
-      Profile.order("created_at DESC").find_by_username(params[:username])
+      User.find_by_username(params[:username])
     end
 
     post 'scrape/:username' do
