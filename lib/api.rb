@@ -25,7 +25,9 @@ class ProfileBuddyServer::API < Grape::API
 
     post 'scrape/:username' do
       username = params[:username]
-      return profile if profile = Profile.find_by_username(username)
+      if profile = Profile.find_by_username(username)
+        return profile
+      end
 
       data = scrapeProfile(username).merge({ username: username })
       Profile.create data
